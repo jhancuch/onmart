@@ -1,0 +1,3 @@
+vim gradlew
+:set fileformat=unix
+:wq
