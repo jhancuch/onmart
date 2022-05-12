@@ -1,0 +1,56 @@
+// Cypher code to determine the distance between Warehouse_1 and the other Warehouses
+
+// Warehouse_18 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_18:Warehouse {facility_id: "Warehouse_18"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_18.latitude, longitude:Warehouse_18.longitude}))
+
+// Warehouse_16 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_16:Warehouse {facility_id: "Warehouse_16"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_16.latitude, longitude:Warehouse_16.longitude}))
+
+// Warehouse_4 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_4:Warehouse {facility_id: "Warehouse_4"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_4.latitude, longitude:Warehouse_4.longitude}))
+
+// Warehouse_12 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_12:Warehouse {facility_id: "Warehouse_12"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_12.latitude, longitude:Warehouse_12.longitude}))
+
+// Warehouse_13 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_13:Warehouse {facility_id: "Warehouse_13"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_13.latitude, longitude:Warehouse_13.longitude}))
+
+// Warehouse_2 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_2:Warehouse {facility_id: "Warehouse_2"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_2.latitude, longitude:Warehouse_2.longitude}))
+
+// Warehouse_19 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_19:Warehouse {facility_id: "Warehouse_19"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_19.latitude, longitude:Warehouse_19.longitude}))
+
+// Warehouse_17 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_17:Warehouse {facility_id: "Warehouse_17"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_17.latitude, longitude:Warehouse_17.longitude}))
+
+// Warehouse_15 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_15:Warehouse {facility_id: "Warehouse_15"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_15.latitude, longitude:Warehouse_15.longitude}))
+
+// Warehouse_5 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_5:Warehouse {facility_id: "Warehouse_5"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_5.latitude, longitude:Warehouse_5.longitude}))
+
+// Warehouse_3 
+MATCH (Warehouse_1:Warehouse {facility_id: "Warehouse_1"})
+MATCH (Warehouse_3:Warehouse {facility_id: "Warehouse_3"})
+RETURN distance(Point({latitude:Warehouse_1.latitude, longitude:Warehouse_1.longitude}), Point({latitude:Warehouse_3.latitude, longitude:Warehouse_3.longitude}))

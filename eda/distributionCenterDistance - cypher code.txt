@@ -1,0 +1,63 @@
+// Cypher code to determine the distance between DistributionCenter_2 and the other distribution centers
+
+// DistributionCenter_65 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_65:Distribution_Center {facility_id: "DistributionCenter_65"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_65.latitude, longitude:DistributionCenter_65.longitude}))
+
+// DistributionCenter_13 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_13:Distribution_Center {facility_id: "DistributionCenter_13"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_13.latitude, longitude:DistributionCenter_13.longitude}))
+
+// DistributionCenter_51 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_51:Distribution_Center {facility_id: "DistributionCenter_51"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_51.latitude, longitude:DistributionCenter_51.longitude}))
+
+// DistributionCenter_37 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_37:Distribution_Center {facility_id: "DistributionCenter_37"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_37.latitude, longitude:DistributionCenter_37.longitude}))
+
+// DistributionCenter_38 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_38:Distribution_Center {facility_id: "DistributionCenter_38"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_38.latitude, longitude:DistributionCenter_38.longitude}))
+
+// DistributionCenter_85 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_85:Distribution_Center {facility_id: "DistributionCenter_85"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_85.latitude, longitude:DistributionCenter_85.longitude}))
+
+// DistributionCenter_66 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_66:Distribution_Center {facility_id: "DistributionCenter_66"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_66.latitude, longitude:DistributionCenter_66.longitude}))
+
+// DistributionCenter_93 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_93:Distribution_Center {facility_id: "DistributionCenter_93"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_93.latitude, longitude:DistributionCenter_93.longitude}))
+
+// DistributionCenter_50 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_50:Distribution_Center {facility_id: "DistributionCenter_50"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_50.latitude, longitude:DistributionCenter_50.longitude}))
+
+// DistributionCenter_14 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_14:Distribution_Center {facility_id: "DistributionCenter_14"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_14.latitude, longitude:DistributionCenter_14.longitude}))
+
+// DistributionCenter_86 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_86:Distribution_Center {facility_id: "DistributionCenter_86"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_86.latitude, longitude:DistributionCenter_86.longitude}))
+
+// DistributionCenter_84 
+MATCH (DistributionCenter_2:Distribution_Center {facility_id: "DistributionCenter_2"})
+MATCH (DistributionCenter_84:Distribution_Center {facility_id: "DistributionCenter_84"})
+RETURN distance(Point({latitude:DistributionCenter_2.latitude, longitude:DistributionCenter_2.longitude}), Point({latitude:DistributionCenter_84.latitude, longitude:DistributionCenter_84.longitude}))
+
+
