@@ -1,0 +1,21 @@
+// create graph
+CALL gds.graph.project('MyGraph', ['Category', 'Customer', 'Product', 'Review'], ['REVIEWS','IN_CATEGORY','WROTE_REVIEW','FRIEND_WITH'])
+
+
+// run pagerank algorithm
+CALL gds.pageRank.write('MyGraph', {
+  maxIterations: 100,
+  dampingFactor: 0.85,
+  writeProperty: 'pagerank'
+})
+YIELD nodePropertiesWritten, ranIterations, didConverge, centralityDistribution, configuration
+
+
+// query most influential reviewers
+match (c:Customer)
+with c.pagerank as pageRank, c.firstName as firstName, c.lastName as lastName, c.customerID as customerID
+return customerID, firstName, lastName, pageRank
+order by pageRank desc
+
+
+
