@@ -11,7 +11,7 @@ RETURN nodePropertiesWritten, ranIterations, didConverge, centralityDistribution
 // Compute percentiles
 MATCH (c:Customer)
 WHERE exists(c.tablesPageRank)
-return avg(c.tablesPageRank) as ave,
+return avg(c.tablesPageRank) as average,
 apoc.math.round(percentileDisc(c.tablesPageRank, 0.5), 2) AS `50%`,
 apoc.math.round(percentileDisc(c.tablesPageRank, 0.75), 2) AS `75%`,
 apoc.math.round(percentileDisc(c.tablesPageRank, 0.90), 2) AS `90%`,
