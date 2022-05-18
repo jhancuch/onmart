@@ -18,22 +18,21 @@ toFloat(percentileDisc(c.between,1)) AS P100
 
 
 // Display all betweenness scores for relevant customers
-MATCH (c:Customer)-[:WROTE_REVIEW]->()-[:REVIEWS]->(:Product {productName: "Laptop Table - Multipurpose"})
+MATCH (c:Customer)-[:WROTE_REVIEW]->()-[:REVIEWS]->(:Product {productName: "Samsung LCD 40 inch"})
 Where exists(c.between)
 WITH collect (distinct c.lastName) as userName,
      toInteger(c.between) as betweenness,
      c.tablesPageRank as pagerank,
-     size((c)-[:WROTE_REVIEW]->()-[:REVIEWS]->()-[:IN_CATEGORY]->(:Category {category: 'Tables'})) AS TablesReviews
-Return userName,
-betweenness, pagerank, TablesReviews order by betweenness desc
+     size((c)-[:WROTE_REVIEW]->()-[:REVIEWS]->()-[:IN_CATEGORY]->(:Category {category: 'Appliances'})) AS TablesReviews
+Return userName, betweenness, pagerank, TablesReviews order by betweenness desc
 
 
-// Cross-promot Tables product Laptop Table - Multipurpose with Produce
-MATCH (c:Customer)-[:WROTE_REVIEW]->()-[:REVIEWS]->(:Product {productName: "Laptop Table - Multipurpose"})
+// Cross-promote product Samsung TV with Produce
+MATCH (c:Customer)-[:WROTE_REVIEW]->()-[:REVIEWS]->(:Product {productName: "Samsung LCD 40 inch"})
 WHERE c.between > 2.0
 WITH c ORDER BY c.between DESC LIMIT 50
 MATCH (c:Customer)-[:WROTE_REVIEW]->(review)-[:REVIEWS]->( product )
-WHERE ( product )-[:IN_CATEGORY]->(:Category {category: "Bookcases"})
+WHERE ( product )-[:IN_CATEGORY]->(:Category {category: "Tables"})
 WITH c, product , avg( toInteger(review.rating)) AS averageReviewRating, count(*) AS numberOfReviews
 WHERE numberOfReviews >= 1
 RETURN  c.lastName AS Customer, product.productName AS Product, averageReviewRating, numberOfReviews
