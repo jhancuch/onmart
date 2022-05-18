@@ -7,60 +7,60 @@ match (n) return n;
 
 
 // Create the customer nodes
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
-MERGE (c:Customer {customerID: row.customerID, lastName: row.lastName, firstName: row.firstName})
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
+MERGE (c:Customer {customerID: row.CustomerID, lastName: row.LastName, firstName: row.FirstName})
 
 
 // UNWIND multiple values for FRIENDS of the customer
 // And build FRIEND_WITH relationship
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
-MATCH (c:Customer {customerID: row.customerID})
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
+MATCH (c:Customer {customerID: row.CustomerID})
 WITH c, row
-UNWIND split(row.friends, ';') AS friend
+UNWIND split(row.Friends, ';') AS friend
 MATCH (f:Customer {customerID: friend})
 MERGE (c)-[:FRIEND_WITH]->(f)
 
 
 // Create the Review Nodes
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
 WITH row
-WHERE NOT row.reviewID IS NULL
-MERGE (r:Review {reviewID: row.reviewID, rating: row.rating})
+WHERE NOT row.ReviewID IS NULL
+MERGE (r:Review {reviewID: row.ReviewID, rating: row.Rating})
 
 
 // Create the WROTE_REVIEW relationship
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
 WITH row
-WHERE NOT row.reviewID IS NULL
-MATCH (c:Customer {customerID: row.customerID})
-MATCH (r:Review {reviewID: row.reviewID})
+WHERE NOT row.ReviewID IS NULL
+MATCH (c:Customer {customerID: row.CustomerID})
+MATCH (r:Review {reviewID: row.ReviewID})
 MERGE (c)-[:WROTE_REVIEW]->(r)
 
 
 // Create the Category nodes
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
-MERGE (cat:Category {category: row.category})
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
+MERGE (cat:Category {category: row.Category})
 
 
 // Create the Product nodes
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
-MERGE (p:Product {productID: row.productID, productName: row.productName})
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
+MERGE (p:Product {productID: row.ProductID, productName: row.ItemPurchased})
 
 
 // Create the IN_CATEGORY relationship
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
 WITH row
-MATCH (p:Product {productID: row.productID})
-MATCH (cat:Category {category: row.category})
+MATCH (p:Product {productID: row.ProductID})
+MATCH (cat:Category {category: row.Category})
 MERGE (p)-[:IN_CATEGORY]->(cat)
 
 
 // Create the REVIEWS relationship
-LOAD CSV WITH HEADERS FROM 'file:///Sample_Orders_Log_1000_Transactions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'file:///PurchasesLog.csv' AS row
 WITH row
 WHERE NOT row.reviewID IS NULL
-MATCH (r:Review {reviewID: row.reviewID})
-MATCH (p:Product {productID: row.productID})
+MATCH (r:Review {reviewID: row.ReviewID})
+MATCH (p:Product {productID: row.ProductID})
 MERGE (r)-[:REVIEWS]->(p)
 
 // Create graph projection 

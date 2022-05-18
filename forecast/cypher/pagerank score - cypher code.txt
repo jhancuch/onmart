@@ -1,0 +1,36 @@
+// write tablesPageRank values to nodes
+CALL gds.pageRank.write('OnMart_v1',{
+maxIterations: 100,
+dampingFactor: 0.85,
+writeProperty: 'tablesPageRank'
+})
+YIELD nodePropertiesWritten, ranIterations, didConverge, centralityDistribution, configuration
+RETURN nodePropertiesWritten, ranIterations, didConverge, centralityDistribution, configuration
+
+
+// Compute percentiles
+MATCH (c:Customer)
+WHERE exists(c.tablesPageRank)
+return avg(c.tablesPageRank) as ave,
+apoc.math.round(percentileDisc(c.tablesPageRank, 0.5), 2) AS `50%`,
+apoc.math.round(percentileDisc(c.tablesPageRank, 0.75), 2) AS `75%`,
+apoc.math.round(percentileDisc(c.tablesPageRank, 0.90), 2) AS `90%`,
+apoc.math.round(percentileDisc(c.tablesPageRank, 0.95), 2) AS `95%`,
+apoc.math.round(percentileDisc(c.tablesPageRank, 0.99), 2) AS `99%`,
+apoc.math.round(percentileDisc(c.tablesPageRank, 1.0), 2) AS `100%`
+
+
+// Check and display for page rank greater than 0.74
+MATCH (c:Customer)
+WHERE exists(c.tablesPageRank)
+MATCH (c:Customer)
+WHERE c.tablesPageRank > 0.16
+WITH c ORDER BY c.tablesPageRank DESC
+
+RETURN c.customerID AS customerID, c.lastName AS lastName,
+       c.tablesPageRank AS pageRank,
+       size((c)-[:WROTE_REVIEW]->()-[:REVIEWS]->()-[:IN_CATEGORY]->(:Category {category: 'Tables'})) AS TablesReviews,
+       size((c)-[:WROTE_REVIEW]->()) AS totalReviews,
+       size((c)-[:FRIEND_WITH]-()) AS friends;
+
+
